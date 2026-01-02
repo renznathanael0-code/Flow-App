@@ -1,0 +1,71 @@
+:root {
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --primary: #007bff;
+    --dark: #2c3e50;
+    --bg: #f0f2f5;
+}
+
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background-color: var(--bg); 
+    display: flex; justify-content: center; padding: 20px; color: #333; 
+}
+
+.container { width: 100%; max-width: 600px; }
+
+.input-card { 
+    background: white; padding: 20px; border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; 
+}
+
+.input-group { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+input, select { padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem; }
+input[type="text"] { flex: 2; min-width: 150px; }
+input[type="number"] { flex: 1; min-width: 80px; }
+
+/* NEU: Filter Styling */
+.filter-zone {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filter-zone input { flex: 2; background: white; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.filter-zone select { flex: 1; background: white; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+button { cursor: pointer; border: none; border-radius: 6px; font-weight: bold; transition: 0.2s; }
+
+.add-btn { width: 100%; padding: 12px; background: var(--success); color: white; font-size: 1rem; }
+.add-btn:hover { background: #218838; }
+
+.backup-zone { 
+    margin-top: 15px; display: flex; gap: 10px; border-top: 1px solid #eee; padding-top: 15px; 
+}
+
+.secondary-btn { 
+    flex: 1; font-size: 0.75rem; padding: 8px; background: #f8f9fa; color: #666; border: 1px solid #ddd; 
+}
+
+.task-item { 
+    background: white; padding: 15px; margin-bottom: 15px; border-radius: 12px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 15px;
+}
+
+.category-icon { 
+    font-size: 1.8rem; background: #f0f2f5; width: 50px; height: 50px; 
+    display: flex; align-items: center; justify-content: center; border-radius: 10px; 
+}
+
+.task-content { flex-grow: 1; }
+
+.task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.task-title { font-size: 1.1em; font-weight: bold; color: var(--dark); }
+
+.progress-container { background: #eee; height: 8px; border-radius: 4px; margin: 8px 0; overflow: hidden; }
+.progress-bar { height: 100%; transition: width 0.5s ease; }
+
+.history { font-size: 0.8em; color: #777; margin-top: 10px; padding-top: 8px; border-top: 1px dashed #ddd; }
+.actions { display: flex; gap: 8px; margin-top: 12px; }
+.done-btn { background: var(--primary); color: white; padding: 8px; flex-grow: 1; }
+.delete-btn { background: #fff; color: #ccc; border: 1px solid #ddd; width: 40px; }

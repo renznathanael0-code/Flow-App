@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wartungsplaner Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏠 Wartung & Logbuch</h1>
+    
+    <div class="input-card">
+        <div class="input-group">
+            <input type="text" id="taskName" placeholder="Was ist zu tun?">
+            <select id="taskCategory">
+                <option value="🏠">Allgemein</option>
+                <option value="🍳">Küche</option>
+                <option value="🚗">Auto</option>
+                <option value="🌳">Garten</option>
+                <option value="🛡️">Sicherheit</option>
+                <option value="💻">Technik</option>
+            </select>
+            <input type="number" id="taskInterval" placeholder="Tage">
+        </div>
+        <button class="add-btn" onclick="addTask()">+ Aufgabe erstellen</button>
+        
+        <div class="backup-zone">
+            <button class="secondary-btn" onclick="exportData()">📥 Backup Export</button>
+            <button class="secondary-btn" onclick="document.getElementById('importFile').click()">📤 Backup Import</button>
+            <input type="file" id="importFile" style="display:none" onchange="importData(event)">
+        </div>
+    </div>
+
+    <div class="filter-zone">
+        <input type="text" id="searchText" placeholder="Suchen..." oninput="renderTasks()">
+        <select id="filterCategory" onchange="renderTasks()">
+            <option value="Alle">Alle Kategorien</option>
+            <option value="🏠">Allgemein</option>
+            <option value="🍳">Küche</option>
+            <option value="🚗">Auto</option>
+            <option value="🌳">Garten</option>
+            <option value="🛡️">Sicherheit</option>
+            <option value="💻">Technik</option>
+        </select>
+    </div>
+
+    <div id="taskList"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
