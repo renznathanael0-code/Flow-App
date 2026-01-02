@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarter Kleiderschrank</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">  
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👔 Smarter Kleiderschrank</h1>
+            <div id="weatherWidget" class="weather-bar">Lade Wetterdaten...</div>
+        </header>
+        
+        <section class="card-section">
+            <h2>Neues Teil hinzufügen</h2>
+            <div class="input-form">
+                <input type="text" id="itemName" placeholder="Name (z.B. Wollmantel)">
+                <select id="itemCategory">
+                    <option value="Oberteil">👕 Oberteil</option>
+                    <option value="Hose">👖 Hose</option>
+                    <option value="Schuhe">👟 Schuhe</option>
+                    <option value="Zubehör">🕶️ Zubehör</option>
+                </select>
+                <input type="text" id="itemOccasion" placeholder="Anlass (z.B. Business, Sport)">
+                <select id="itemWeatherTag">
+                    <option value="kalt">❄️ Für Kalt</option>
+                    <option value="mild">⛅ Für Mild</option>
+                    <option value="heiß">☀️ Für Heiß</option>
+                    <option value="regen">☔ Wasserfest</option>
+                </select>
+                <div class="file-upload">
+                    <input type="file" id="itemImage" accept="image/*">
+                </div>
+                <button onclick="addItem()" class="add-btn">Hinzufügen</button>
+            </div>
+        </section>
+
+        <section class="generator-box">
+            <h2>Outfit Generator</h2>
+            <div class="generator-controls">
+                <select id="selectOccasion"></select>
+                <button onclick="generateOutfit()" class="gen-btn">✨ Look generieren</button>
+            </div>
+        </section>
+
+        <div id="displayArea" class="grid"></div>
+    </div>
+
+    <div id="wardrobeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Dein Look</h2>
+            <div id="outfitDisplay" class="outfit-animation"></div>
+            <button onclick="wearOutfit()" class="wear-btn">Heute tragen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitaler Finanz-Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">  
+</head>
+<body>
+
+    <div id="sperrbildschirm-overlay">
+        <div id="login-container" class="card">
+            <h2>🔐 Zugang erforderlich</h2>
+            <div id="setup-message">
+                </div>
+            <form id="login-formular">
+                <div class="form-group">
+                    <label for="master-passwort">Master-Passwort:</label>
+                    <input type="password" id="master-passwort" required minlength="6">
+                </div>
+                <button type="submit" id="login-button">Entsperren / Festlegen</button>
+            </form>
+            <p id="login-fehler" style="color: red; margin-top: 10px; display: none;">Falsches Passwort oder Fehler beim Entschlüsseln.</p>
+        </div>
+    </div>
+    <header>
+        <h1>💰 Digitaler Finanz-Tracker</h1>
+    </header>
+
+    <main id="haupt-inhalt" style="display: none;"> 
+        
+        <section id="initial-saldo-section" class="card">
+            <h2>0. Startkontostand festlegen</h2>
+            <div class="form-group">
+                <label for="start-saldo-input">Aktueller Kontostand (€):</label>
+                <input type="number" id="start-saldo-input" step="0.01" required value="0">
+            </div>
+            <button id="start-saldo-speichern">Start-Saldo speichern</button>
+        </section>
+
+        <section id="saldo-anzeige-section" class="card">
+            <h2>Aktueller Saldo</h2>
+            <div id="saldo-anzeige">
+                <span id="saldo-betrag">0.00 €</span>
+            </div>
+            <div id="warn-meldung" class="warnung" style="display: none;"></div>
+        </section>
+        
+        <hr>
+
+        <section id="transaktions-sektion" class="card">
+            <h2>1. Neue Transaktion erfassen</h2>
+            <form id="transaktions-formular">
+                <div class="form-group">
+                    <label for="beschreibung">Beschreibung:</label>
+                    <input type="text" id="beschreibung" required>
+                </div>
+                <div class="form-group">
+                    <label for="betrag">Betrag (€):</label>
+                    <input type="number" id="betrag" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="art">Art:</label>
+                    <select id="art" required>
+                        <option value="" disabled selected>Wählen Sie...</option>
+                        <option value="einnahme">Einnahme</option>
+                        <option value="ausgabe">Ausgabe</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="kategorie">Kategorie:</label>
+                    <select id="kategorie" required></select> 
+                </div>
+                <div class="form-group">
+                    <label for="datum">Datum:</label>
+                    <input type="date" id="datum" required value="">
+                </div>
+                <button type="submit">Transaktion speichern</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="standard-und-budget-container">
+            <section id="standard-zahlung-sektion" class="card">
+                <h2>2. Standardzahlungen (Monatlich)</h2>
+                
+                <form id="standard-transaktions-formular">
+                    <div class="form-group">
+                        <label for="standard-beschreibung">Beschreibung:</label>
+                        <input type="text" id="standard-beschreibung" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="standard-betrag">Betrag (€):</label>
+                        <input type="number" id="standard-betrag" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="standard-art">Art:</label>
+                        <select id="standard-art" required>
+                            <option value="" disabled selected>Wählen Sie...</option>
+                            <option value="einnahme">Einnahme</option>
+                            <option value="ausgabe">Ausgabe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="standard-kategorie">Kategorie:</label>
+                        <select id="standard-kategorie" required></select>
+                    </div>
+                    <button type="submit">Standardzahlung speichern</button>
+                </form>
+
+                <div class="standard-list-container">
+                    <h3>Gespeicherte Standardzahlungen</h3>
+                    <ul id="standard-transaktions-liste">
+                        </ul>
+                </div>
+                
+                <div class="buchung-info">
+                    <button id="monatliche-buchung-btn">Standardzahlungen jetzt buchen</button>
+                    <p id="letzte-buchung-info">Letzte Buchung: -</p>
+                </div>
+            </section>
+            
+            <section id="budget-verwaltung" class="card">
+                <h2>3. Budget festlegen & Fortschritt</h2>
+                
+                <form id="budget-formular">
+                    <div class="form-group">
+                        <label for="budget-kategorie">Kategorie wählen:</label>
+                        <select id="budget-kategorie" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-betrag">Max. Betrag pro Monat (€):</label>
+                        <input type="number" id="budget-betrag" step="0.01" required>
+                    </div>
+                    <button type="submit">Budget Speichern/Aktualisieren</button>
+                </form>
+                
+                <h3>Aktuelle Budgets (aktueller Monat)</h3>
+                <ul id="budget-liste">
+                    </ul>
+            </section>
+
+        </section>
+
+        <hr>
+
+        <section id="uebersichts-sektion" class="card">
+            <h2>4. Transaktions-Historie</h2>
+            <ul id="transaktions-liste">
+                </ul>
+        </section>
+
+        <hr>
+
+        <section id="berichts-sektion" class="card">
+            <h2>5. Monatsbericht & Saldo-Analyse</h2>
+            
+            <div class="form-group report-control">
+                <label for="bericht-monat-auswahl">Monat auswählen:</label>
+                <select id="bericht-monat-auswahl"></select>
+                <button id="bericht-generieren-btn">Bericht generieren</button>
+            </div>
+            
+            <div id="berichts-container">
+                <div id="kategorien-details"></div>
+                <div id="saldo-verlauf-details"></div>
+                
+                <div id="berichts-details"></div> 
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Digitaler Finanz-Tracker</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

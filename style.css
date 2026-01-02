@@ -1,0 +1,166 @@
+/* style.css */
+
+/* Grundlegende Stile für den Ladebildschirm */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox für Zentrierung */
+    flex-direction: column; /* Elemente untereinander anordnen */
+    justify-content: center; /* Vertikale Zentrierung */
+    align-items: center; /* Horizontale Zentrierung */
+    min-height: 100vh; /* Mindesthöhe des Viewports */
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Blauer-Lila-Farbverlauf */
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Verhindert Scrollbalken */
+}
+
+.logo-container {
+    opacity: 0; /* Startet unsichtbar */
+    /* Animation für 4s (damit 1s vor Redirect fertig ist, insgesamt 5s) */
+    animation: fadeInOut 4s ease-in-out forwards;
+    /* Zusätzliche Zentrierung für den Container selbst */
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Inhalt im Container horizontal zentrieren */
+    justify-content: center; /* Inhalt im Container vertikal zentrieren */
+    width: 100%; /* Stellt sicher, dass der Container die volle Breite nutzt, um zu zentrieren */
+}
+
+.logo-container h1 {
+    font-size: 8em; /* Sehr groß für Flow */
+    margin: 0;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Leuchtender Effekt */
+}
+
+.branding {
+    font-size: 1.8em; /* Kleinere Schrift für Renz Software */
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Styles für den Ladebalken */
+.loading-bar-container {
+    width: 70%; /* Etwas breiter als zuvor */
+    max-width: 400px; /* Maximale Breite begrenzen */
+    height: 12px; /* Deutlich höher, um sichtbarer zu sein */
+    background-color: rgba(255, 255, 255, 0.4); /* Hellerer, transparenter Hintergrund */
+    border-radius: 6px; /* Abgerundeter für ein moderneres Aussehen */
+    margin-top: 40px; /* Abstand zum Branding-Text */
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3); /* Mehr Schatten für Tiefe und Glanz */
+    position: relative; /* Wichtig für den Glanz-Effekt */
+    align-self: center; /* Zentriert den Balken innerhalb des Flex-Containers */
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #00c6ff, #0072ff); /* Ein leuchtender Blau-Verlauf */
+    border-radius: 6px;
+    /* Animation über 5 Sekunden für den Ladebalken */
+    animation: fillBar 5s linear forwards, shimmer 2s infinite linear;
+    box-shadow: 0 0 10px rgba(0, 200, 255, 0.7); /* Leuchten um den Balken */
+}
+
+/* Animation für Ein- und Ausblenden des Textes */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); } /* Startet leicht versetzt und unsichtbar */
+    10% { opacity: 1; transform: translateY(0); } /* Schnell einblenden */
+    90% { opacity: 1; transform: translateY(0); } /* Bleibt sichtbar */
+    100% { opacity: 0; transform: translateY(-20px); } /* Schnell ausblenden */
+}
+
+/* Keyframe-Animation für den Ladebalken */
+@keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* Keyframe-Animation für den Glanz-Effekt */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive Anpassungen für kleine Bildschirme */
+@media (max-width: 600px) {
+    .logo-container h1 {
+        font-size: 5em;
+    }
+    .branding {
+        font-size: 1.2em;
+    }
+    .loading-bar-container {
+        width: 85%; /* Noch breiter auf kleinen Bildschirmen */
+        height: 10px; /* Etwas kleiner für mobile */
+    }
+}
+
+/* Style-Regeln für den Splash Screen in index.html */
+
+#splash-screen {
+    /* Bildschirm füllen und zentrieren */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Hintergrundfarbe: Helle Farbe wie im restlichen App-Design */
+    background-color: #2575fc, #6a11cb
+    color: #333; /* Dunkle Textfarbe für den Kontrast */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 5rem; /* Sehr groß und prominent */
+    margin: 0;
+    font-weight: bold;
+    /* Akzentfarbe für das Logo */
+    color: white; 
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.3); 
+}
+
+.tagline {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 300;
+    color: #7f8c8d; /* Dezente Farbe für den Untertitel */
+}
+
+/* Ladeanimation (Spinner) */
+
+.loading-spinner {
+    /* Größe und Form des Kreises */
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
+    
+    /* Der äußere graue Rand */
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%; /* Macht das Element kreisförmig */
+    
+    /* Der animierte farbige Teil */
+    border-top-color: #3498db; /* Die Akzentfarbe, z.B. hellblau */
+    
+    /* Startet die Rotationsanimation */
+    animation: spin 1s linear infinite;
+}
+
+/* Definition der eigentlichen Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

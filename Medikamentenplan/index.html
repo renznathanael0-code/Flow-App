@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medikamentenplan 2.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">  
+</head>
+<body>
+
+    <header>
+        <h1>💊 Mein Medikationsplan</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="add-medication-form">
+                <h2>Medikament hinzufügen</h2>
+                <form id="med-form">
+                    <label for="name">Name des Medikaments:</label>
+                    <input type="text" id="name" required><br>
+
+                    <label for="stock">Anfangsbestand:</label>
+                    <input type="number" id="stock" min="1" required><br>
+
+                    <label for="dosage">Dosierung (Menge pro Einnahme):</label>
+                    <input type="number" id="dosage" min="1" required><br>
+                    
+                    <label for="expiry-date">Ablaufdatum (Monat/Jahr):</label>
+                    <input type="month" id="expiry-date" required><br>
+
+                    <label for="intake-frequency">Einnahmehäufigkeit:</label>
+                    <select id="intake-frequency" required>
+                        <option value="daily">Täglich</option>
+                        <option value="weekly">Wöchentlich</option>
+                        <option value="monthly">Monatlich</option>
+                    </select><br>
+
+                    <div id="frequency-details">
+                        <label for="time">Uhrzeit:</label>
+                        <input type="time" id="time" required>
+                    </div>
+
+                    <label for="notes">Einnahmehinweise:</label>
+                    <textarea id="notes"></textarea><br>
+
+                    <button type="submit">Hinzufügen</button>
+                </form>
+            </section>
+
+            <hr>
+
+            <section id="medication-list">
+                <h2>Aktuelle Medikamente & Vorrat</h2>
+                <ul id="med-list">
+                    </ul>
+            </section>
+
+            <hr>
+            
+            <section id="app-calendar">
+                <h2>📅 Einnahmeplan (In-App-Kalender)</h2>
+                <div id="calendar-header">
+                    <button id="prev-month">←</button>
+                    <span id="current-month-year"></span>
+                    <button id="next-month">→</button>
+                </div>
+                <div id="calendar-grid">
+                    <div class="day-name">So</div><div class="day-name">Mo</div><div class="day-name">Di</div>
+                    <div class="day-name">Mi</div><div class="day-name">Do</div><div class="day-name">Fr</div>
+                    <div class="day-name">Sa</div>
+                </div>
+                <div id="daily-schedule-view" class="mt-20">
+                    <h3>Einnahmen für <span id="selected-date-info">Heute</span>:</h3>
+                    <ul id="daily-schedule-list">
+                        </ul>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="history">
+                <h2>📝 Einnahme-Historie & Nebenwirkungen</h2>
+                <ul id="history-list">
+                    </ul>
+            </section>
+
+            <hr>
+            
+            <section id="emergency">
+                <h2>📞 Medizinische Kontakte</h2>
+                
+                <label for="dr-name">Name des Arztes:</label>
+                <input type="text" id="dr-name" placeholder="Dr. Mustermann"><br>
+
+                <label for="dr-email">E-Mail-Adresse des Arztes:</label>
+                <input type="email" id="dr-email" placeholder="arzt@praxis.de"><br>
+
+                <label for="user-info">Ihr Name / Ihre E-Mail (für die E-Mail-Signatur):</label>
+                <input type="text" id="user-info" placeholder="Max Mustermann (max@mail.de)"><br>
+            </section>
+            
+            <hr>
+            <section id="maintenance-options">
+                <h2>🛠️ Wartungsoptionen</h2>
+                <div class="mt-10">
+                    <button id="clear-history-btn" class="warning-btn">Einnahme-Historie löschen</button>
+                    <p class="small-text">Achtung: Dies kann nicht rückgängig gemacht werden!</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="popup-reminder" class="reminder-hidden">
+        <h3>⏰ Einnahme-Erinnerung!</h3>
+        <p id="popup-text"></p>
+        <button id="take-med">Eingenommen</button>
+        <button id="snooze-med">Später</button>
+    </div>
+
+    <div id="prescription-modal" class="reminder-hidden">
+        <h3>📄 Rezeptanforderung</h3>
+        <p>Rezept für: <strong id="modal-med-name"></strong></p>
+        
+        <label for="modal-pr-notes">Zusätzliche Anmerkungen (z.B. Packungsgröße):</label>
+        <textarea id="modal-pr-notes" rows="3"></textarea><br>
+        
+        <button id="modal-submit-prescription" class="action-btn">E-Mail an Arzt senden</button>
+        <button id="modal-cancel-prescription" class="delete-btn">Abbrechen</button>
+    </div>
+
+    <div id="side-effect-modal" class="reminder-hidden">
+        <h3>🚨 Nebenwirkung melden</h3>
+        <p>Melde Nebenwirkung für: <strong id="modal-se-med-name"></strong></p>
+        
+        <label for="modal-se-notes">Beschreibung der Nebenwirkung:</label>
+        <textarea id="modal-se-notes" rows="4" required></textarea><br>
+        
+        <button id="modal-save-side-effect" class="action-btn">Nur in Historie speichern</button>
+        <button id="modal-submit-side-effect" class="warning-btn">E-Mail an Arzt senden</button>
+        <button id="modal-cancel-side-effect" class="delete-btn">Abbrechen</button>
+    </div>
+
+    <div id="question-modal" class="reminder-hidden">
+        <h3>❓ Frage zum Medikament</h3>
+        <p>Frage zu: <strong id="modal-q-med-name"></strong></p>
+        
+        <label for="modal-q-subject">Betreff der E-Mail (z.B. "Frage zur Einnahme"):</label>
+        <input type="text" id="modal-q-subject" required><br>
+
+        <label for="modal-q-notes">Ihre Frage an den Arzt:</label>
+        <textarea id="modal-q-notes" rows="4" required></textarea><br>
+        
+        <button id="modal-submit-question" class="action-btn">E-Mail an Arzt senden</button>
+        <button id="modal-cancel-question" class="delete-btn">Abbrechen</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

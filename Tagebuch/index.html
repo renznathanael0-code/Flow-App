@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitales Tagebuch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="manifest" href="manifest.json">  
+</head>
+<body>
+
+<div class="password-modal" id="password-modal">
+    <div class="modal-content">
+        <h2>Tagebuch gesperrt</h2>
+        <p id="password-prompt">Gib deine PIN ein:</p>
+        <input type="password" id="password-input" maxlength="4">
+        <button id="unlock-btn">Entsperren</button>
+    </div>
+</div>
+
+<div class="top-menu">
+    <select id="diary-select"></select>
+    <button id="new-diary-btn">Neues Tagebuch</button>
+</div>
+
+<div class="diary-container">
+    
+    <div class="book-cover">
+        <h1 id="diary-title">Mein Tagebuch</h1>
+        <div class="cover-settings">
+            <button id="edit-cover-btn">Cover bearbeiten</button>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prevBtn"> &lt; </button>
+        <button id="nextBtn"> &gt; </button>
+    </div>
+</div>
+
+<div class="bottom-menu">
+    <button id="exportBtn">Exportieren & Teilen</button>
+    <label for="importFile" class="import-label">
+        <input type="file" id="importFile" accept=".tagebuch" style="display:none;">
+        Importieren
+    </label>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

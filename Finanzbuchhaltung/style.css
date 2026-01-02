@@ -1,0 +1,405 @@
+/* Grundlegende Typografie und Layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-weight: 700;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Formulare und allgemeine Elemente */
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* --- NEU: SPERRBILDSCHIRM STYLES --- */
+#sperrbildschirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(244, 247, 246, 0.95); /* Leicht durchscheinender Hintergrund */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-container {
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+#login-container h2 {
+    color: #007bff;
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+#setup-message {
+    margin-bottom: 20px;
+}
+/* ENDE SPERRBILDSCHIRM STYLES */
+
+
+/* Saldo-Anzeige und Warnungen */
+#saldo-anzeige {
+    font-size: 2.5em;
+    font-weight: 700;
+    padding: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.positiv {
+    color: #28a745; /* Grün */
+}
+
+.negativ {
+    color: #dc3545; /* Rot */
+}
+
+.warnung {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.warnung-niedrig {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.warnung-kritisch {
+    background-color: #ffe0b2;
+    color: #ff9800;
+}
+
+.warnung-akut {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Transaktionsliste */
+#transaktions-liste {
+    list-style: none;
+    padding: 0;
+}
+
+.transaktion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+}
+
+.transaktion-item:last-child {
+    border-bottom: none;
+}
+
+.transaktion-betrag {
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.transaktion-item small {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.delete-btn {
+    background: #dc3545;
+    padding: 5px 8px;
+    font-size: 0.8em;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Layout-Anpassung für Budget und Standardzahlung */
+#standard-und-budget-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#standard-zahlung-sektion .buchung-info {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+#standard-zahlung-sektion .buchung-info button {
+    background-color: #17a2b8;
+}
+
+#standard-zahlung-sektion .buchung-info button:hover {
+    background-color: #138496;
+}
+
+/* Berichte */
+.report-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.report-control select {
+    flex-grow: 1;
+}
+
+#berichts-details {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+#berichts-details h4 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+/* --- BUDGET-DASHBOARD STYLES --- */
+#budget-liste {
+    list-style: none;
+    padding: 0;
+}
+
+.budget-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.budget-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.budget-balken-container {
+    background-color: #eee;
+    height: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.budget-balken {
+    height: 100%;
+    transition: width 0.5s;
+}
+
+.budget-im-limit { background-color: #4CAF50; } /* Grün */
+.budget-kritisch { background-color: #FFC107; } /* Gelb */
+.budget-ueberschritten { background-color: #F44336; } /* Rot */
+
+.budget-status-text {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.8em;
+}
+
+.delete-budget-btn {
+    background: #ccc;
+    color: #333;
+    border: none;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 10px;
+    float: right;
+}
+
+/* --- KATEGORIEN-DIAGRAMM STYLES (ALS BALKEN) --- */
+#kategorien-details {
+    margin-bottom: 30px;
+}
+
+.kategorien-diagramm-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.kategorien-diagramm-list li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.diagramm-kategorie-name, .diagramm-kategorie-wert {
+    font-size: 0.9em;
+}
+
+.diagramm-balken-container {
+    background-color: #f0f0f0;
+    height: 10px;
+    margin-top: 5px;
+    border-radius: 2px;
+}
+
+.diagramm-balken {
+    height: 100%;
+    background-color: #007bff; /* Blau für Ausgaben-Analyse */
+    transition: width 0.5s;
+}
+
+/* --- SALDO-VERLAUF CHART SIMULATION --- */
+#saldo-verlauf-details {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.verlauf-container {
+    height: 180px;
+    width: 100%;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: linear-gradient(to top, #fff 50%, #eee 50%); 
+    position: relative;
+    margin-top: 15px;
+}
+
+.null-linie {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+    z-index: 10;
+}
+
+.verlauf-punkt {
+    position: absolute;
+    width: 15px; 
+    bottom: 0; 
+    transform: translateX(-50%);
+    border-radius: 3px;
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.verlauf-punkt.positiv {
+    background-color: #4CAF50; 
+}
+
+.verlauf-punkt.negativ {
+    background-color: #F44336; 
+}
+
+.verlauf-beschriftung {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 0.75em;
+    padding: 0 5px;
+}
+
+.verlauf-beschriftung span {
+    width: calc(100% / 6); 
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+/* Media Queries für besseres Layout auf kleinen Bildschirmen */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    #standard-und-budget-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 767px) {
+    #standard-und-budget-container {
+        grid-template-columns: 1fr;
+    }
+}

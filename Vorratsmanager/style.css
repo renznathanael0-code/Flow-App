@@ -1,0 +1,271 @@
+/* Grundlegende Stile */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: lightgray;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Modus-Umschalter */
+.mode-switcher {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.mode-switcher h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.mode-switcher select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Modus-spezifische Körperstile */
+body.normal-mode {
+    background-color: #e6ffe6; /* Leichter Grünton */
+}
+
+body.cold-mode {
+    background-color: #ffe6e6; /* Leichter Rotton */
+}
+
+body.holiday-mode {
+    background-color: #e6f7ff; /* Leichter Blauton */
+}
+
+body.guests-mode {
+    background-color: #f3e6ff; /* Leichter Lilaton */
+}
+
+/* Artikel hinzufügen Formular */
+.add-item {
+    display: flex;
+    flex-wrap: wrap; /* Erlaubt Umbruch auf kleineren Bildschirmen */
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    align-items: center; /* Vertikale Ausrichtung */
+}
+
+.add-item input[type="text"],
+.add-item input[type="number"],
+.add-item select {
+    flex: 1; /* Nimmt verfügbaren Platz ein */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    min-width: 120px; /* Mindestbreite für Inputs */
+}
+
+.add-item button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.add-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Artikel Liste */
+.item-list {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fdfdfd;
+    min-height: 100px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-details {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.item-actions button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.item-actions .use-btn {
+    background-color: #ffc107; /* Gelb */
+    color: #333;
+}
+
+.item-actions .use-btn:hover {
+    background-color: #e0a800;
+}
+
+.item-actions .delete-btn {
+    background-color: #dc3545; /* Rot */
+    color: white;
+}
+
+.item-actions .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Benachrichtigungen */
+.notifications {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ffc107; /* Gelber Rand für Warnungen */
+    background-color: #fff3cd; /* Heller Gelbton */
+    border-radius: 8px;
+}
+
+.notifications p {
+    margin: 5px 0;
+    color: #856404; /* Dunkelgelb für Text */
+}
+
+.notifications p:last-child {
+    margin-bottom: 0;
+}
+
+/* Stil für das Kategorien-Dropdown */
+.add-item select {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    min-width: 120px;
+    background-color: #fff;
+    appearance: none; /* Entfernt Standard-Dropdown-Pfeil */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C114.7L146.6%2C255.1c-5.3%2C5.3-13.8%2C5.3-19%2C0L5.3%2C114.7c-5.3-5.3-5.3-13.8%2C0-19l19-19c5.3-5.3%2C13.8-5.3%2C19%2C0l103.3%2C103.3L249%2C76.7c5.3-5.3%2C13.8-5.3%2C19%2C0l19%2C19C292.3%2C100.9%2C292.3%2C109.4%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Platz für den Pfeil */
+}
+
+/* --- Pop-up (Modal) Styles --- */
+.modal {
+    display: none; /* Standardmäßig versteckt */
+    position: fixed; 
+    z-index: 1000; /* Ganz oben */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Dunkler Hintergrund */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% von oben und zentriert */
+    padding: 25px;
+    border: 1px solid #888;
+    width: 80%; /* Kann auf mobilen Geräten angepasst werden */
+    max-width: 500px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    position: relative;
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #dc3545; /* Rot für Warnung */
+    border-bottom: 2px solid #dc3545;
+    margin-bottom: 15px;
+}
+
+#modalNotificationsContent {
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff0f0; /* Hellroter Hintergrund für Inhalte */
+    border-radius: 5px;
+}
+
+.notification-item-modal {
+    color: #dc3545;
+    font-weight: bold;
+    margin: 8px 0;
+    padding-left: 10px;
+    border-left: 3px solid #dc3545;
+}
+
+#confirmNotificationsBtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+#confirmNotificationsBtn:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    display: none; /* Wir entfernen den Schließen-Button, damit der User das Pop-up nicht einfach wegklicken kann, ohne zu bestätigen */
+}

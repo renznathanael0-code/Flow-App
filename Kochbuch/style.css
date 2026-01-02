@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+h1, h2, h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recipe-input, .recipes-list, .shopping-list-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 10px; /* Abstand zwischen Buttons */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#update-recipe-btn {
+    background-color: #007bff;
+}
+#update-recipe-btn:hover {
+    background-color: #0056b3;
+}
+
+#cancel-edit-btn {
+    background-color: #6c757d;
+}
+#cancel-edit-btn:hover {
+    background-color: #5a6268;
+}
+
+.recipes-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recipes-list li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.recipes-list li h3 {
+    margin: 0;
+    color: #333;
+    flex-grow: 1;
+}
+
+.recipes-list li .recipe-actions {
+    display: flex;
+    gap: 10px; /* Abstand zwischen den Buttons */
+}
+
+.recipes-list li .recipe-actions button {
+    margin-top: 0; /* Keine zusätzliche obere Margin */
+}
+
+.recipes-list li .delete-recipe-btn {
+    background-color: #dc3545;
+}
+.recipes-list li .delete-recipe-btn:hover {
+    background-color: #c82333;
+}
+
+.recipes-list li .edit-recipe-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+.recipes-list li .edit-recipe-btn:hover {
+    background-color: #e0a800;
+}
+
+
+.recipe-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+    width: 100%;
+    padding-top: 5px;
+    border-top: 1px dashed #eee;
+}
+
+.recipe-details h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.recipe-details pre {
+    white-space: pre-wrap;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#shopping-list-selection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+#shopping-list-selection label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#shopping-list-selection input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto;
+    margin-bottom: 0;
+}
+
+.manual-ingredient-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.manual-ingredient-input input {
+    flex-grow: 1; /* Nimmt den restlichen Platz ein */
+    margin-bottom: 0; /* Entfernt die extra Margin für dieses Input */
+}
+
+#shopping-list {
+    background-color: #e9ffe9;
+    border: 1px solid #cce8cc;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+#shopping-list ul {
+    list-style-type: none; /* Keine Standard-Listenpunkte */
+    padding-left: 0;
+}
+
+#shopping-list li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Abstand zwischen Text und Checkbox */
+    padding: 5px 0;
+    border-bottom: 1px dotted #e0e0e0;
+}
+
+#shopping-list li:last-child {
+    border-bottom: none;
+}
+
+#shopping-list li input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto;
+    margin-bottom: 0;
+    transform: scale(1.2); /* Checkbox etwas größer */
+    cursor: pointer;
+}
+
+#shopping-list li.checked span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+#clear-shopping-list-btn {
+    background-color: #007bff;
+}
+
+#clear-shopping-list-btn:hover {
+    background-color: #0056b3;
+}

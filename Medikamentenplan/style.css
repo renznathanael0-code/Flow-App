@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Allgemeine Helferklasse */
+.hidden {
+    display: none !important;
+}
+.mt-20 { margin-top: 20px; }
+.mt-10 { margin-top: 10px; }
+
+
+/* Form Styling */
+#med-form label, #med-form input, #med-form textarea, #med-form select, #med-form button,
+#emergency label, #emergency input, #emergency textarea, #emergency select, #emergency button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Button Basis Styling */
+#med-form button, .med-actions button, #emergency button, 
+#prescription-modal button, #side-effect-modal button, #question-modal button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 5px;
+    width: auto;
+}
+
+/* WICHTIGE BUTTON-KLASSEN */
+.action-btn {
+    background-color: #007bff !important; /* Blau für Einnehmen/Nachfüllen/Rezept */
+    color: white !important;
+}
+.warning-btn {
+    background-color: #ffc107 !important; /* Gelb/Orange für Nebenwirkungen */
+    color: #333 !important;
+}
+.info-btn {
+    background-color: #17a2b8 !important; /* Türkis für Fragen/Arzt-Anfragen Button */
+    color: white !important;
+}
+.delete-btn {
+    background-color: #dc3545 !important; /* Rot für Löschen/Abbrechen */
+    color: white !important;
+}
+
+/* Medication List Styling */
+#med-list li {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.med-actions {
+    /* Stellt sicher, dass alle Buttons und das Dropdown nebeneinander stehen */
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px; /* Kleiner Abstand zwischen den Elementen */
+    margin-top: 10px;
+}
+
+/* --- Dropdown-Styling für Medikamenten-Aktionen --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; 
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+/* ------------------------------------------------ */
+
+
+/* Kalender-Styling */
+#app-calendar {
+    text-align: center;
+}
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+.day-name {
+    font-weight: bold;
+    color: #333;
+    padding: 5px 0;
+}
+.calendar-day {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #eee;
+    transition: background-color 0.2s;
+    font-size: 14px;
+}
+.calendar-day:hover {
+    background-color: #ddd;
+}
+.has-intake {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    font-weight: bold;
+}
+.current-day {
+    background-color: #b8daff !important;
+    border: 1px solid #007bff;
+    font-weight: bold;
+}
+#daily-schedule-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+#daily-schedule-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+
+/* Pop-up Reminder & Modals Basis */
+.reminder-hidden {
+    display: none;
+}
+.reminder-visible {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+.reminder-visible textarea {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+.reminder-visible input {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Spezifische Modal-Stile */
+#popup-reminder {
+    background: #ffc107; 
+    border: 2px solid #dc3545;
+}
+
+#prescription-modal {
+    background: #e6f2ff; 
+    border: 2px solid #007bff;
+}
+
+#side-effect-modal {
+    background: #f8d7da; 
+    border: 2px solid #dc3545;
+}
+
+#question-modal {
+    background: #e6f7ff; 
+    border: 2px solid #17a2b8;
+}
+
+#prescription-modal h3 { color: #007bff; }
+#side-effect-modal h3 { color: #dc3545; }
+#question-modal h3 { color: #17a2b8; }
+
+#side-effect-modal button, #question-modal button, #prescription-modal button { 
+    margin: 5px; /* Abstand zwischen Modal-Buttons */
+}

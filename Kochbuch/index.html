@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitales Kochbuch</title>
+    <link rel="stylesheet" href="style.css">
+ <link rel="manifest" href="manifest.json">    
+    <style>
+      .recipe-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+      .recipe-actions {
+        margin-top: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digitales Kochbuch</h1>
+
+        <div class="recipe-input">
+            <h2>Neues Rezept hinzufügen / Bearbeiten</h2>
+            <input type="hidden" id="edit-recipe-id">
+
+            <label for="recipe-name">Rezeptname:</label>
+            <input type="text" id="recipe-name" placeholder="z.B. Spaghetti Carbonara">
+
+            <label for="prep-time">Zubereitungszeit (Minuten):</label>
+            <input type="number" id="prep-time" min="1" value="30">
+
+            <label for="servings">Portionen:</label>
+            <input type="number" id="servings" min="1" value="4">
+
+            <label for="recipe-category">Kategorie:</label>
+            <select id="recipe-category">
+                <option value="">Keine Kategorie</option>
+                <option value="Fleisch">Fleisch</option>
+                <option value="Vegetarisch">Vegetarisch</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Glutenfrei">Glutenfrei</option>
+                <option value="Suppe">Suppe</option>
+                <option value="Salat">Salat</option>
+                <option value="Dessert">Dessert</option>
+            </select>
+
+            <label for="ingredients">Zutaten (jede Zutat in einer neuen Zeile, z.B. "200g Spaghetti"):</label>
+            <textarea id="ingredients" rows="5" placeholder="200g Spaghetti
+100g Pancetta
+2 Eigelb
+50g Parmesan
+Salz
+Pfeffer"></textarea>
+
+            <label for="instructions">Zubereitung:</label>
+            <textarea id="instructions" rows="8" placeholder="1. Spaghetti kochen...
+2. Pancetta anbraten..."></textarea>
+
+            <button id="add-recipe-btn">Rezept hinzufügen</button>
+            <button id="update-recipe-btn" style="display:none;">Rezept aktualisieren</button>
+            <button id="cancel-edit-btn" style="display:none;">Bearbeitung abbrechen</button>
+        </div>
+
+        <div class="search-filter">
+            <h2>Rezepte suchen und filtern</h2>
+            <input type="text" id="search-input" placeholder="Rezept suchen...">
+             <label for="filter-category">Kategorie:</label>
+            <select id="filter-category">
+                <option value="">Alle</option>
+                <option value="Fleisch">Fleisch</option>
+                <option value="Vegetarisch">Vegetarisch</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Glutenfrei">Glutenfrei</option>
+                <option value="Suppe">Suppe</option>
+                <option value="Salat">Salat</option>
+                <option value="Dessert">Dessert</option>
+            </select>
+        </div>
+
+        <div class="recipes-list">
+            <h2>Deine Rezepte</h2>
+            <ul id="recipes-ul">
+                </ul>
+        </div>
+
+        <div class="shopping-list-section">
+            <h2>Einkaufszettel</h2>
+            <p>Wähle Rezepte aus, um sie zum Einkaufszettel hinzuzufügen:</p>
+            <div id="shopping-list-selection">
+                </div>
+            <button id="generate-shopping-list-btn">Ausgewählte Rezepte zum Einkaufszettel hinzufügen</button>
+            <button id="allergen-check-btn">Auf Allergene prüfen</button>
+
+            <h3>Manuelle Zutaten hinzufügen</h3>
+            <div class="manual-ingredient-input">
+                <input type="text" id="manual-ingredient-item" placeholder="Zutat hinzufügen, z.B. Milch">
+                <button id="add-manual-ingredient-btn">Hinzufügen</button>
+            </div>
+
+            <div id="shopping-list">
+                </div>
+             <div class="shopping-list-buttons">
+                <button id="clear-shopping-list-btn">Einkaufszettel leeren</button>
+                </div>
+        </div>
+         <div class="import-export-section">
+            <h2>Rezepte Importieren / Exportieren</h2>
+            <textarea id="import-export-textarea" rows="10" placeholder="Hier JSON-Daten für den Import einfügen oder zum Exportieren kopieren"></textarea>
+            <button id="import-recipes-btn">Rezepte Importieren</button>
+            <button id="export-recipes-btn">Rezepte Exportieren</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

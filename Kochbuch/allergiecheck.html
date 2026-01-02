@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergie-Check</title>
+    <link rel="stylesheet" href="allergiecheck.css">
+    <link rel="manifest" href="manifest.json">  
+</head>
+<body>
+    <section id="mapping-bearbeiten" class="hidden">
+        <h2>Allergie-Mapping bearbeiten</h2>
+        <p>Passe das Allergie-Mapping an. Du kannst Begriffe hinzufügen oder entfernen oder neue Allergien erstellen. Klicke anschließend auf "Speichern & Schließen".</p>
+
+        <h3>Bestehende Allergien bearbeiten:</h3>
+        <div id="mapping-felder">
+            </div>
+
+        <h3>Neue Allergie hinzufügen:</h3>
+        <div id="neue-allergie-mapping-felder">
+            <label for="neue-allergie-name">Allergie Name:</label><br>
+            <input type="text" id="neue-allergie-name" placeholder="z.B. Soja"><br><br>
+            <label for="neue-allergie-begriffe">Zugehörige Begriffe (durch Komma trennen):</label><br>
+            <input type="text" id="neue-allergie-begriffe" placeholder="z.B. Sojabohne, Sojalecithin"><br><br>
+            <button id="allergie-mapping-hinzufuegen">Allergie zum Bearbeiten hinzufügen</button>
+        </div>
+        <br>
+
+        <button id="mapping-speichern">Speichern & Schließen</button>
+        <button id="mapping-abbrechen">Abbrechen</button> </section>
+
+<header>
+   <h1>Allergie-Check</h1>
+     <button id="notfall-hinweise-button">Notfall-Hinweise</button>
+  <a href="index.html" class="button-link" target="_blank">Zurück zum Kochbuch</a>
+
+</header>
+  
+    <section id="eingabe-bereich">
+       
+        <label for="neue-allergie">Meine Allergien hinzufügen:</label><br>
+        <input type="text" id="neue-allergie" list="allergie-vorschlaege" placeholder="z.B. Gluten"><br>
+        <datalist id="allergie-vorschlaege"></datalist>
+        <button id="hinzufuegen-allergie">Hinzufügen</button>
+        <div id="allergie-liste">
+            </div>
+
+        <label for="zutaten">Zutatenliste eingeben:</label><br>
+        <textarea id="zutaten" rows="5" placeholder="Gib hier die Zutatenliste ein (z.B. Weizenmehl, Milch, Ei)"></textarea>
+        <datalist id="zutaten-vorschlaege"></datalist>
+        <button id="pruefen-zutaten">Zutaten prüfen</button>
+      </section>
+
+    <section id="ergebnis-bereich" class="hidden">
+        <h2>Ergebnis</h2>
+        <p id="ergebnis-text"></p>
+        <ul id="gefundene-allergene" class="hidden">
+            </ul>
+        <div class="hinweis">
+            <strong>Wichtiger Hinweis:</strong> Diese App unterstützt Sie bei der Prüfung von Zutatenlisten. Bitte prüfen Sie die Zutatenliste dennoch selbst und holen Sie bei Unsicherheit ärztlichen Rat ein. Für fehlerhafte Einschätzungen wird keine Haftung übernommen.
+        </div>
+    </section>
+  <div id="button-container">
+    <label for="einstellungen">Einstellungen</label>
+        <button id="ton_an_aus_button">Hinweissignal Aus</button>
+        <button id="mapping-bearbeiten-button">Mapping bearbeiten</button> </div>
+
+ <script src="allergiecheck.js"></script>
+</body>
+</html>
