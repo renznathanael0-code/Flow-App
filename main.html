@@ -8,46 +8,30 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="header-content">
-            <h1>Flow</h1>
-            <p class="tagline">Ihr zentraler digitaler Assistent</p>
-        </div>
-       <div class="header-actions">
-            <div class="branding-header">
-                Renz Software
-            </div>
-        </div>
+        <h1>Flow</h1>
+        <p>Ihr zentraler digitaler Assistent</p>
     </header>
 
     <main class="app-grid-container">
-        <h2>Ihre Anwendungen auf einen Blick:</h2>
         <div class="app-grid">
             <a href="Medikamentenplan/index.html" class="app-card" data-app="medikamentenplan">
                 <h3>Medikamentenplan</h3>
-                <p>Nie wieder eine Einnahme vergessen.</p>
             </a>
             <a href="Kochbuch/index.html" class="app-card" data-app="kochbuch">
                 <h3>Digitales Kochbuch</h3>
-                <p>Ihre Lieblingsrezepte immer griffbereit.</p>
             </a>
-          
             <a href="Finanzbuchhaltung/index.html" class="app-card" data-app="finanzbuchhaltung">
                 <h3>Digitale Finanzbuchhaltung</h3>
-                <p>Ihre Ein- und Ausgaben auf einen Blick</p>
             </a>
             <a href="Vorratsmanager/index.html" class="app-card" data-app="vorratsmanager">
                 <h3>Vorratsmanager</h3>
-                <p>Behalten Sie den Überblick über Ihre Bestände.</p>
             </a>
-<a href="Tagebuch/index.html" class="app-card" data-app="tagebuch">
-    <h3>Digitales Tagebuch</h3>
-    <p>Ihre täglichen Gedanken und Erinnerungen.</p>
-</a>
-          <a href="Kleiderschrank/index.html" class="app-card" data-app="kleiderschrank">
-    <h3>Smarter Kleiderschrank</h3>
-    <p>Immer das passende Outfit.</p>
-</a>
-
+            <a href="Tagebuch/index.html" class="app-card" data-app="tagebuch">
+                <h3>Digitales Tagebuch</h3>
+            </a>
+            <a href="Kleiderschrank/index.html" class="app-card" data-app="kleiderschrank">
+                <h3>Smarter Kleiderschrank</h3>
+            </a>
         </div>
         
         <div class="manage-apps">
@@ -55,43 +39,19 @@
         </div>
     </main>
 
-    <footer class="main-footer">
-        &copy; 2025 Renz Software. Alle Rechte vorbehalten.
-    </footer>
-    
-        <script>
-        // Name des Speicherschlüssels (muss mit script.js übereinstimmen)
+    <script>
         const APP_DATA_KEY = 'flowUserApps'; 
         
         document.addEventListener('DOMContentLoaded', () => {
-            // Jetzt laden wir die Apps direkt aus dem globalen Schlüssel
-            const storedApps = localStorage.getItem(APP_DATA_KEY);
-            const userApps = storedApps ? JSON.parse(storedApps) : null;
-            
+            const stored = localStorage.getItem(APP_DATA_KEY);
+            const userApps = stored ? JSON.parse(stored) : [];
             const appCards = document.querySelectorAll('.app-card');
             
-            if (!userApps || userApps.length === 0) {
-                // Wenn keine Apps gewählt sind, zeige alle an (Standard)
-                appCards.forEach(card => card.style.display = 'flex');
-                return;
-            }
-
-            appCards.forEach(card => {
-                const appName = card.getAttribute('data-app');
-                if (!userApps.includes(appName)) {
-                    card.style.display = 'none';
-                } else {
-                    card.style.display = 'flex';
-                }
-            });
-            
-            // Konfiguriert den "Anpassen"-Button
-            const adaptBtn = document.getElementById('logout-btn');
-            if (adaptBtn) {
-                adaptBtn.addEventListener('click', () => {
-                    window.location.href = 'selection.html'; // Weiterleitung zur Auswahlseite
+            if (userApps.length > 0) {
+                appCards.forEach(card => {
+                    const name = card.getAttribute('data-app');
+                    card.style.display = userApps.includes(name) ? 'flex' : 'none';
                 });
-                adaptBtn.textContent = 'Anpassen'; // Stellt sicher, dass der Text "Anpassen" ist
             }
         });
     </script>
